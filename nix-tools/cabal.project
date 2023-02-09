@@ -1,6 +1,7 @@
-index-state: 2022-11-06T00:00:00Z
-
 packages: .
+
+extra-packages:
+  , cabal-install
 
 allow-newer: hackage-db:Cabal, hpack:Cabal, hnix:aeson, hnix:relude
 
