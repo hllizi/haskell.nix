@@ -18,7 +18,7 @@
         # don't use cabalProject here, it's too strict and accidentally evaluates IDF for other architectures 
         project = pkgs: pkgs.haskell-nix.cabalProject' rec {
           src = ./.;
-          compiler-nix-name = "ghc925";
+          compiler-nix-name = "ghc8107";
         };
 
         flake = pkgs: (project pkgs).flake { };
