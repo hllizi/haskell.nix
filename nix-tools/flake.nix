@@ -43,22 +43,13 @@
       in
       pkgs.haskell-nix.haskellLib.combineFlakes ""
         (
-          { "native" = flake pkgs; }
+          { "native-" = flake pkgs; }
           // pkgs.lib.optionalAttrs (pkgs.stdenv.hostPlatform.isLinux && pkgs.stdenv.hostPlatform.isx86_64)
             (pkgs.lib.listToAttrs
-              (map (pkgs': pkgs.lib.nameValuePair "${pkgs'.hostPlatform.config}" (flake pkgs'))
+              (map (pkgs': pkgs.lib.nameValuePair "${pkgs'.hostPlatform.config}-" (flake pkgs'))
                 [ pkgs.pkgsCross.musl64 pkgs.pkgsCross.aarch64-multiplatform-musl ]))
-        )
-      // {
-        # inherit project;
-        # constituents = projectComponents project "exes";
-        # hydraJobs = flake.hydraJobs // {
-        #   binary = mkBinaryTarball (pkgs.symlinkJoin {
-        #     name = "nix-tools";
-        #     paths = projectComponents project "exes";
-        #   });
-        # };
-      });
+        ));
+
   # --- Flake Local Nix Configuration ----------------------------
   nixConfig = {
     extra-substituters = [
