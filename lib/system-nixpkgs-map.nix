@@ -116,7 +116,7 @@ in
   GeoIP = [ geoip ];
   pulse-simple = [ libpulseaudio ];
   oath = [ liboauth ];
-  wiringPI [ wiringpi ];
+  wiringPI = [ wiringpi ];
 }
 # -- windows
 // { advapi32 = null; gdi32 = null; imm32 = null; msimg32 = null;
